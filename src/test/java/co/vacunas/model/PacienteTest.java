@@ -82,4 +82,23 @@ class PacienteTest {
             assertEquals(Mensajes.RAZA_VACIO_PACIENTE,ex.getMessage());
         }
     }
+    @Test
+    public void verDatosPaciente(){
+
+        try{
+            Paciente paciente = new Paciente.PacienteBuilder()
+                    .setIdPaciente(1l)
+                    .setNombre("Luna")
+                    .setEspecie("Felino")
+                    .setRaza("Angora")
+                    .setNombreDueno("Yagoo")
+                    .setTelefono(42424244l)
+                    .build();
+            assertEquals("1LunaFelinoAngoraYagoo42424244",paciente.getIdPaciente()+
+                    paciente.getNombre()+paciente.getEspecie()+paciente.getRaza()+paciente.getNombreDueno()+paciente.getTelefono());
+        }
+        catch (BussinessException ex){
+
+        }
+    }
 }

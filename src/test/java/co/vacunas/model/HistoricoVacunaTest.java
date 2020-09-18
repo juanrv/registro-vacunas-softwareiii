@@ -2,9 +2,11 @@ package co.vacunas.model;
 
 import co.vacunas.model.exception.BussinessException;
 import co.vacunas.util.Mensajes;
+import co.vacunas.util.Validador;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -81,6 +83,19 @@ class HistoricoVacunaTest {
         }
         catch (BussinessException ex){
             assertEquals(Mensajes.VACUNA_NO_NULA, ex.getMessage());
+        }
+    }
+
+    @Test
+    public void fechaExcedida (){
+        try{
+            Calendar fechaAProbar = Calendar.getInstance();
+            fechaAProbar.add(Calendar.MONTH, -3);
+            fecha = fechaAProbar.getTime();
+            Validador.validarRangoFecha(fecha, Mensajes.FECHA_CONSULTA_EXCEDIDA);
+        }
+        catch (BussinessException ex){
+            assertEquals(Mensajes.FECHA_CONSULTA_EXCEDIDA, ex.getMessage());
         }
     }
 

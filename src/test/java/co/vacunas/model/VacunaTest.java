@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.security.PublicKey;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -47,6 +51,24 @@ class VacunaTest {
         }
         catch (BussinessException ex) {
             assertEquals(Mensajes.FECHA_NULA_VACUNA, ex.getMessage());
+        }
+    }
+
+    @Test
+    public void verDatosVacuna(){
+        try{
+            Calendar fechaAEnviar = Calendar.getInstance();
+            fechaAEnviar.set(2020,01,07,0,0,0);
+            Date fecha = fechaAEnviar.getTime();
+            Vacuna vacuna = new Vacuna.VacunaBuilder()
+                    .setIdVacuna(1l)
+                    .setNombre("COSA")
+                    .setFechaCaducidad(fecha)
+                    .build();
+            assertEquals("1COSA"+fechaAEnviar.getTime().toString(), vacuna.getIdVacuna()+vacuna.getNombre()+vacuna.getFechaCaducidad().toString());
+        }
+        catch (BussinessException ex){
+
         }
     }
 }

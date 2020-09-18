@@ -76,27 +76,27 @@ public class Paciente {
             return paciente;
         }
     }
-    public Long verIdPaciente() {
+    public Long getIdPaciente() {
         return idPaciente;
     }
 
-    public String verNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public String verEspecie() {
+    public String getEspecie() {
         return especie;
     }
 
-    public String verRaza() {
+    public String getRaza() {
         return raza;
     }
 
-    public String verNombreDueno() {
+    public String getNombreDueno() {
         return nombreDueno;
     }
 
-    public Long verTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 }
